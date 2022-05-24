@@ -1,10 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Link } from "react-router-dom";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import './style/app.css'
 
 function App() {
   return (
  <>
- my playlist
+ <Header />
+ <Main />
  </>
   );
 }

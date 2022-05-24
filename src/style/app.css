@@ -1,0 +1,9 @@
+body{
+    display: flex;
+    justify-content: center;
+    background: rgb(254, 251, 105);
+}
+
+.link{
+    padding: 20px;
+}
