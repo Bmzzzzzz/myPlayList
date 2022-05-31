@@ -51,6 +51,7 @@ header {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     margin: 0;
+    font-size: x-large;
   }
   
 
@@ -67,3 +68,19 @@ header {
     
   }
   
+.searchList{
+  display: flex;
+
+}
+
+.artists{
+  width: 40vw;
+  display: flex;
+  flex-direction:column;
+}
+
+.songs{
+  display: flex;
+  flex-direction:column;
+  width: 40vw;
+}

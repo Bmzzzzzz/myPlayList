@@ -3,24 +3,23 @@ import { useContext, useState, useEffect } from "react";
 
 export default function Search() {
     const x = useContext(apiContext);
-    console.log(x);
-    const [inputSearch, setInputSearch] = useState("a");
-    const [filteredsong, setFilteredSong] = useState("a");
-    const [filteredArtist, setFilteredArtist] = useState("a");
-
-
-
+    const [inputSearch, setInputSearch] = useState("");
+    const [filteredsong, setFilteredSong] = useState([]);
+    const [filteredArtist, setFilteredArtist] = useState([]);
 
     useEffect(() => {
         let a = x.filter((v) => {
-            return v.name.common.toLowerCase().startsWith(inputSearch.toLowerCase());
-        })
+            return v.name.common
+                .toLowerCase()
+                .startsWith(inputSearch.toLowerCase());
+        });
         let b = x.filter((v) => {
-            return (v.name.common.toLowerCase().startsWith(inputSearch.toLowerCase()));
-        })
+            return v.name.common
+                .toLowerCase()
+                .startsWith(inputSearch.toLowerCase());
+        });
         setFilteredArtist(a);
         setFilteredSong(b);
-        console.log(a);
     }, [inputSearch]);
     return (
         <>
@@ -29,34 +28,38 @@ export default function Search() {
                 placeholder="search song or artist"
                 onChange={(e) => setInputSearch(e.target.value)}
             />
-            <Artists artist={filteredArtist} />
-            <Songs song={filteredsong} />
-            search
+            <div className="searchList">
+                <Artists id="artists" artist={filteredArtist} />
+                <Songs id="songs"  song={filteredsong} />
+            </div>
         </>
     );
 }
 
-function Artists(props) {
-    let gg = props
-    console.log("filter" + gg);
+function Artists({ artist }) {
     return (
-        <>
-            {/* 
-            {
-                props.Artists.map((
-                    <div>{capital[0]}</div>
-                ))} */}
-        </>
+        <div className="artists">
+            {artist.map((v) => {
+                return (
+                    <>
+                        <div key={v.capital}>{v.capital}</div>
+                    </>
+                );
+            })}
+        </div>
     );
 }
 
-function Songs(props) {
+function Songs({ song }) {
     return (
-        <>
-            ff
-            {/* {props.artist.map((v) => (
-                <div>{v.name.common}</div>
-            ))} */}
-        </>
+        <div className="songs">
+            {song.map((v) => {
+                return (
+                    <>
+                        <div key={v.name.common}>{v.name.common}</div>
+                    </>
+                );
+            })}
+        </div>
     );
 }

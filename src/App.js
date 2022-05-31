@@ -8,10 +8,9 @@ import { apiContext } from "./context/apiContext";
 
 function App() {
   const setUser = useState(false)
-  const [api, setApi] = useState('')
+  const [api, setApi] = useState(false)
 
   useEffect(() => {
-    setApi("loding.....")
 
     fetch("https://restcountries.com/v3.1/all") // promise
       .then((res) => res.json())
@@ -19,7 +18,7 @@ function App() {
         setApi(data);
       });
   }, []);
-
+  if (!api) return "Loding..."
   return (
     <>
       <apiContext.Provider value={api}>
