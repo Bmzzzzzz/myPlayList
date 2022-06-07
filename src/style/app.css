@@ -1,16 +1,16 @@
 body{
     display: flex;
     justify-content: center;
-    background: rgb(254, 251, 105);
+    background: #fff1e1;
 }
 
 .link{
     padding: 20px;
 }
 
-
-
-
+.spin{
+  display: flex;
+}
 
 
 header {
@@ -18,20 +18,20 @@ header {
     margin: 0 auto;
   }
   
-  /* header {
-    width: 960px;
-  } */
-  
+
 
   
   header {
     width: auto;
     margin-left: 10px;
     flex: auto;
+    display: flex;
   }
   
+  serch
   main {
     width: 750px;
+    height: 750px;;
   }
   
   *,
@@ -44,10 +44,8 @@ header {
   
   body {
     
-    background: #ebee2baf;
-
-    
-    color: rgb(48, 219, 99);
+    background: #fff1e1;
+    color:#1d3c45;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     margin: 0;
@@ -57,7 +55,7 @@ header {
 
 
   main {
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid #b2601a;
     margin-bottom: 10px;
     border-radius: 3px;
    
@@ -83,4 +81,9 @@ header {
   display: flex;
   flex-direction:column;
   width: 40vw;
+}
+
+.input{
+  color: #1d3c45;
+  font-size: small;
 }

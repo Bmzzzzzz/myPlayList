@@ -1,10 +1,11 @@
 import { useContext, useState, useEffect } from "react"
-import { Routes, Route, Link } from "react-router-dom";
+//import { Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import './style/app.css'
 import { UserContext } from "./context/UserContext";
 import { apiContext } from "./context/apiContext";
+import './style/loding.css'
 
 function App() {
   const setUser = useState(false)
@@ -18,9 +19,37 @@ function App() {
         setApi(data);
       });
   }, []);
-  if (!api) return "Loding..."
+  if (!api) return(<><div classN="lds-hourglass">loding.....</div></>);
   return (
     <>
+    <div className="spin">
+
+      
+    <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+   <div class="eq-spinner"><i /></div>
+  
+   </div>
       <apiContext.Provider value={api}>
         <UserContext.Provider value={setUser}>
           <Header />
