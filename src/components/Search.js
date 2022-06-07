@@ -6,21 +6,46 @@ export default function Search() {
     const [inputSearch, setInputSearch] = useState("");
     const [filteredsong, setFilteredSong] = useState([]);
     const [filteredArtist, setFilteredArtist] = useState([]);
+    const [api, setApi] = useState([]);
+    console.log(x);
 
     useEffect(() => {
-        let a = x.filter((v) => {
-            return v.name.common
-                .toLowerCase()
-                .startsWith(inputSearch.toLowerCase());
-        });
-        let b = x.filter((v) => {
-            return v.name.common
-                .toLowerCase()
-                .startsWith(inputSearch.toLowerCase());
-        });
-        setFilteredArtist(a);
-        setFilteredSong(b);
-    }, [inputSearch]);
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Host': 'simple-youtube-search.p.rapidapi.com',
+                'X-RapidAPI-Key': '301135241emsh54f069e20bde0f3p172a07jsn98571b0076bd'
+            }
+        };
+
+        fetch('https://simple-youtube-search.p.rapidapi.com/search?query=pop', options)
+            .then(response => response.json())
+            .then(response => { setApi(response.results); });
+
+    }, []);
+
+
+
+
+
+    //     useEffect(() => {
+    //         const options = {
+    //             method: 'GET',
+    //             headers: {
+    //                 'X-RapidAPI-Host': 'simple-youtube-search.p.rapidapi.com',
+    //                 'X-RapidAPI-Key': '301135241emsh54f069e20bde0f3p172a07jsn98571b0076bd'
+    //             }
+    //         };
+
+    //         fetch('https://simple-youtube-search.p.rapidapi.com/search?query=' + inputSearch, options)
+    //             .then(response => response.json())
+    //             .then(response => { setApi(response.results); });
+
+    //     }, [inputSearch]);
+
+
+
+
     return (
         <>
             <input
@@ -29,12 +54,16 @@ export default function Search() {
                 onChange={(e) => setInputSearch(e.target.value)}
             />
             <div className="searchList">
-                <Artists id="artists" artist={filteredArtist} />
-                <Songs id="songs"  song={filteredsong} />
+                <Artists id="artists" artist={api} />
+                <Songs id="songs" song={api} />
             </div>
         </>
     );
 }
+
+
+
+
 
 function Artists({ artist }) {
     return (
@@ -42,7 +71,7 @@ function Artists({ artist }) {
             {artist.map((v) => {
                 return (
                     <>
-                        <div key={v.capital}>{v.capital}</div>
+                        <div key={v.channel.id}>{v.channel.name}</div>
                     </>
                 );
             })}
@@ -56,7 +85,7 @@ function Songs({ song }) {
             {song.map((v) => {
                 return (
                     <>
-                        <div key={v.name.common}>{v.name.common}</div>
+                        <div key={v.title}>{v.title}</div>
                     </>
                 );
             })}

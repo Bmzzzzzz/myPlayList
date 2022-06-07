@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
-import'../style/app.css'
+import '../style/app.css'
 
 const users = [
     { id: 1, username: "ariel", password: "asdf" },
@@ -17,6 +18,7 @@ export default function Login() {
         if (index = validation(userInput, passwordInput)) {
             setUser(users[index])
             console.log(users[index]);
+            
         }
         else { alert("error") }
     }
@@ -45,21 +47,21 @@ export default function Login() {
 
 
     return (
-        
-            <div className='input'>
 
-                <form onSubmit={onsubmit} className="wrapper">
-                    <label for='username' className='input'>Username: </label>
-                    <input type="text" id="username" name="username" placeholder="Username" />
-                    <br />
-                    <label for="password" className='input'>Password: </label>
-                    <input type="password" id="password" name="password" placeholder="Password" />
-                    <br />
-                    <label htmlFor="checkbox"> Show password </label>
-                    <input type="checkbox" onClick={showPass} />
-                    <input type="submit" className="btn" />
-                </form>
-                </div>
-            
-            )
+        <div className='input'>
+
+            <form onSubmit={onsubmit} className="wrapper">
+                <label htmlFor='username' className='input'>Username: </label>
+                <input type="text" id="username" name="username" placeholder="Username" />
+                <br />
+                <label htmlFor="password" className='input'>Password: </label>
+                <input type="password" id="password" name="password" placeholder="Password" />
+                <br />
+                <label htmlFor="checkbox"> Show password </label>
+                <input type="checkbox" onClick={showPass} />
+                <input type="submit" className="btn" />
+            </form>
+        </div>
+
+    )
 }
