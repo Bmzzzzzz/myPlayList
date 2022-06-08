@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import'../style/app.css'
 import { UserContext } from "../context/UserContext";
@@ -13,9 +13,11 @@ export default function Nav(){
         
         <span>Profile:{user.username}</span>
         <Link className="link" to="/"> home </Link>
-        <Link className="link" to="/Login"> Login </Link>
-        <Link className="link" to="/Search"> Search </Link>
-        <Link className="link" to="/Playlist"> Playlist </Link>
+        <Link className="link" to="/search"> Search </Link>
+        <Link className="link" to="/playlist"> Playlist </Link>
+        <Link className="link" to="/login"> Login </Link>
+        <Link className="link" to="/singup"> Sing Up </Link>
+
 
         </nav>
         </>

@@ -12,8 +12,7 @@ export default function Header() {
             <header>
               
                 
-                
-
+            
                 
                 <Nav />
         

@@ -4,6 +4,8 @@ import Search from "./Search";
 import Playlist from "./Playlist";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
+import SingUp from "./SingUp";
+import Home from "./Home";
 
 export default function Main() {
     const [user, setUser] = useContext(UserContext);
@@ -12,18 +14,22 @@ export default function Main() {
     useEffect(() => {
         if (user == false) {
             setx(<Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/Login" element={<Login />} />
-                <Route path="/Search" element={<Login />} />
-                <Route path="/Playlist" element={<Login />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/search" element={<Login />} />
+                <Route path="/playlist" element={<Login />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/singUp" element={<SingUp />} />
             </Routes>)
         }
         else {
             setx(<Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/Login" element={<Login />} />
-                <Route path="/Search" element={<Search />} />
-                <Route path="/Playlist" element={<Playlist />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/playlist" element={<Playlist />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/singup" element={<SingUp />} />
             </Routes>)
         }
     }, [user])

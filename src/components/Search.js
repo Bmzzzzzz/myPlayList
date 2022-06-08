@@ -9,7 +9,11 @@ export default function Search() {
     const [api, setApi] = useState([]);
     console.log(x);
 
+
+
+
     useEffect(() => {
+        if (!inputSearch) return
         const options = {
             method: 'GET',
             headers: {
@@ -18,36 +22,19 @@ export default function Search() {
             }
         };
 
-        fetch('https://simple-youtube-search.p.rapidapi.com/search?query=pop', options)
+        fetch('https://simple-youtube-search.p.rapidapi.com/search?query=' + inputSearch, options)
             .then(response => response.json())
             .then(response => { setApi(response.results); });
 
-    }, []);
+    }, [inputSearch]);
 
 
 
-
-
-    //     useEffect(() => {
-    //         const options = {
-    //             method: 'GET',
-    //             headers: {
-    //                 'X-RapidAPI-Host': 'simple-youtube-search.p.rapidapi.com',
-    //                 'X-RapidAPI-Key': '301135241emsh54f069e20bde0f3p172a07jsn98571b0076bd'
-    //             }
-    //         };
-
-    //         fetch('https://simple-youtube-search.p.rapidapi.com/search?query=' + inputSearch, options)
-    //             .then(response => response.json())
-    //             .then(response => { setApi(response.results); });
-
-    //     }, [inputSearch]);
-
-
-
-
+    // if (!api) return (<><div className="lds-hourglass">loding.....</div></>);
     return (
         <>
+
+        <br/>  <br/>  
             <input
                 type="search"
                 placeholder="search song or artist"
@@ -68,7 +55,7 @@ export default function Search() {
 function Artists({ artist }) {
     return (
         <div className="artists">
-            {artist.map((v) => {
+            {artist?.map((v) => {
                 return (
                     <>
                         <div key={v.channel.id}>{v.channel.name}</div>
@@ -82,7 +69,7 @@ function Artists({ artist }) {
 function Songs({ song }) {
     return (
         <div className="songs">
-            {song.map((v) => {
+            {song?.map((v) => {
                 return (
                     <>
                         <div key={v.title}>{v.title}</div>
