@@ -1,10 +1,88 @@
-body{
-    display: flex;
-    justify-content: center;
-    background: #fff1e1;
-}
 
-.link{
+
+
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(8, 235, 163, 0.959);
+    transition: 0.5s;
+    width: 200px;
+    border-radius: 5px;
+    margin: 15px;
+  }
+   
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(29, 206, 38, 0.8);
+  }
+   
+  img {
+    border-radius: 5px 5px 0 0;
+    height: 300px;
+    width: 300px;
+
+
+  }
+
+   
+  iframe {
+    border-radius: 5px 5px 0 0;
+    height:100px;
+    width: 200px;
+
+
+    /* width="420"
+     height="345" */
+  }
+   
+  .cardContent{
+  background-color: #26d8706e;
+  padding: 2px 16px;
+  font-size: 10px;
+  height: 50px;
+      }
+  .cardFooter {
+    background-color: #19d0d6;
+    padding: 2px 16px;
+    font-size: 15px;
+    height: 50px;
+    
+        }
+        .CardButton{
+          background-color: #e0fbfc;
+          padding: 2px 16px;
+          font-size: 20px;
+        }
+   
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  body{
+    background-color: #98c1d9;
+  }
+  button{
+    width: 70px;
+    height: 50px;
+  }
+  .button{
+    
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  
+/* main{
+  display: flex;
+}
+   */
+  
+  .songs{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+
+
+ .link{
     padding: 20px;
 }
 
@@ -34,18 +112,18 @@ header {
     height: 750px;;
   }
   
-  *,
+  /* *,
   *:before,
   *:after {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-  }
+  } */
   
   body {
     
-    background: #fff1e1;
-    color:#1d3c45;
+    background: rgb(223, 32, 32);
+    color:#ffff;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     margin: 0;
@@ -66,24 +144,26 @@ header {
     
   }
   
-.searchList{
+/* .searchList{
   display: flex;
 
-}
+} */
 
-.artists{
+/* .artists{
   width: 40vw;
   display: flex;
   flex-direction:column;
-}
+} */
 
-.songs{
+/* .songs{
   display: flex;
   flex-direction:column;
   width: 40vw;
-}
+} */
 
 .input{
   color: #1d3c45;
   font-size: small;
 }
+
+   

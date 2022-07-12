@@ -4,6 +4,8 @@ import { UserContext } from "../context/UserContext";
 import { useContext } from "react";
 import '../style/loding.css'
 import'../style/app.css'
+import React from "react";
+
 
 export default function Header() {
     const [user, setUser] = useContext(UserContext)

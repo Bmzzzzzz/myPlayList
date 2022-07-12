@@ -1,9 +1,17 @@
 import { apiContext } from "../context/apiContext";
 import { useContext, useState, useEffect } from "react";
+import { CardPlay, CardContent, CardFooter, CardHeader, CardButton } from './CardPlay'
+import * as React from 'react';
+import '../style/app.css'
+
+
+
+
 
 export default function Search() {
     const x = useContext(apiContext);
     const [inputSearch, setInputSearch] = useState("");
+    const [input, setInput] = useState("")
     const [filteredsong, setFilteredSong] = useState([]);
     const [filteredArtist, setFilteredArtist] = useState([]);
     const [api, setApi] = useState([]);
@@ -22,27 +30,30 @@ export default function Search() {
             }
         };
 
+        
         fetch('https://simple-youtube-search.p.rapidapi.com/search?query=' + inputSearch, options)
             .then(response => response.json())
-            .then(response => { setApi(response.results); });
+            .then(response => { setApi(response.results); console.log(response); });
 
     }, [inputSearch]);
 
 
 
-    // if (!api) return (<><div className="lds-hourglass">loding.....</div></>);
+    if (!api) return (<><div className="lds-hourglass">loding.....</div></>);
     return (
         <>
-
-        <br/>  <br/>  
+            <br />  <br />
             <input
                 type="search"
                 placeholder="search song or artist"
-                onChange={(e) => setInputSearch(e.target.value)}
+                // onChange={(e) => setInputSearch(e.target.value)}
+                onChange={(e) => setInput(e.target.value)}
+
             />
-            <div className="searchList">
-                <Artists id="artists" artist={api} />
-                <Songs id="songs" song={api} />
+            <button onClick={() => setInputSearch(input)}>click</button>
+            <div kay="songs" className="searchList">
+                {/* <Artists id="artists" artist={api} /> */}
+                <Songs kay="songs" id="songs" song={api} />
             </div>
         </>
     );
@@ -52,30 +63,51 @@ export default function Search() {
 
 
 
-function Artists({ artist }) {
-    return (
-        <div className="artists">
-            {artist?.map((v) => {
-                return (
-                    <>
-                        <div key={v.channel.id}>{v.channel.name}</div>
-                    </>
-                );
-            })}
-        </div>
-    );
-}
+
 
 function Songs({ song }) {
     return (
-        <div className="songs">
-            {song?.map((v) => {
+        <div key={song.id} className="songs">
+            {song.map((v) => {
                 return (
-                    <>
-                        <div key={v.title}>{v.title}</div>
-                    </>
+
+                    <div className='items'>
+                        <CardPlay key={v.url}>
+                            <CardHeader>
+                                <h1>
+                                    {/* <iframe>{v.url}</iframe> */}
+                                    <div dangerouslySetInnerHTML={{ __html: "<iframe src='https://www.youtube.com/embed/3jgH5weXYwA' />" }} />
+                                </h1>
+                            </CardHeader>
+
+                            <CardContent key={v.title}>
+                                <div>
+                                    <p><b>{v.title}</b></p>
+                                </div>
+                            </CardContent >
+
+                            <CardFooter key={v.duration_formatted}>
+                                <div key={v.duration_formatted}>
+                                    <p>duration: {v.duration_formatted}</p>
+                                </div>
+                            </CardFooter>
+
+                            {/* 
+                            {/* <CardButton>
+                        <div>
+                          <button onClick={() => fruitsFilter(v.uploadedAt)}>remove me</button>
+                        </div>
+                      </CardButton> */}
+                        </CardPlay>
+
+                    </div>
+
+                   
                 );
             })}
-        </div>
+        </div >
     );
 }
+
+{/* 
+{v.thumbnail.url} */}

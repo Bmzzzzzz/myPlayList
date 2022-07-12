@@ -2,6 +2,8 @@ import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 import '../style/app.css'
+import React from "react";
+
 
 const users = [
     { id: 1, username: "ariel", password: "asdf" },
@@ -16,21 +18,34 @@ export default function Login() {
         let index = -1;
 
         if (index = validation(userInput, passwordInput)) {
-            setUser(users[index])
-            console.log(users[index]);
-            
+            setUser(1)
+            console.log(index);
+
         }
         else { alert("error") }
     }
 
     function validation(name, pass) {
-        let flag = false;
-        users.map((v, i) => {
-            if (v.username == name && v.password == pass) {
-                flag = i;
-            }
-        })
-        return flag;
+        const token = ""
+        const flag=false;
+        
+           flag= fetch('http://localhost:3002/api/user/login', {
+                method: "POST", headers: {
+                    "Content-Type": "application/json"
+                }, body: JSON.stringify({ password: pass, email: name })
+            })
+    
+
+        // .then(response => response.json())
+        // .then(response => { setApi(response.results); console.log(response); });
+        // let flag = false;
+        // users.map((v, i) => {
+        //     if (v.username == name && v.password == pass) {
+        //         flag = i;
+        //     }
+        // })
+        console.log(flag);
+         return flag;
     }
 
 

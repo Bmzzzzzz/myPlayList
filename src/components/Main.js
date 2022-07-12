@@ -1,11 +1,14 @@
 import { Routes, Route, Link } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
+import { UserContext } from "../context/UserContext";
 import Login from "./Login";
 import Search from "./Search";
 import Playlist from "./Playlist";
-import { useContext, useState, useEffect } from "react";
-import { UserContext } from "../context/UserContext";
 import SingUp from "./SingUp";
 import Home from "./Home";
+import Footer from "./Footer";
+import React from "react";
+
 
 export default function Main() {
     const [user, setUser] = useContext(UserContext);
@@ -39,6 +42,7 @@ export default function Main() {
             <main>
 
                 {x}
+                {/* <Footer /> */}
             </main>
         </>
     );
