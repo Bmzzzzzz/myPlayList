@@ -29,7 +29,7 @@ export default function Login() {
         const token = ""
         const flag=false;
         
-           flag= fetch('http://localhost:3002/api/user/login', {
+           flag= fetch('http://localhost:3002/api/users/login', {
                 method: "POST", headers: {
                     "Content-Type": "application/json"
                 }, body: JSON.stringify({ password: pass, email: name })
