@@ -25,16 +25,21 @@ export default function Login() {
         else { alert("error") }
     }
 
-    function validation(name, pass) {
-        const token = ""
-        const flag=false;
-        
-           flag= fetch('http://localhost:3002/api/users/login', {
-                method: "POST", headers: {
-                    "Content-Type": "application/json"
-                }, body: JSON.stringify({ password: pass, email: name })
-            })
-    
+    async function validation(name, pass) {
+        let flag = false;
+
+        const res = await fetch('http://localhost:3002/api/users/login', {
+            method: "POST", headers: {
+                "Content-Type": "application/json"
+            }, body: JSON.stringify({ password: pass, email: name })
+        })
+
+        const token = await res.text()
+        console.log(token)
+        // todo store token in local storage
+        // and get user by token
+        setUser(token)
+
 
         // .then(response => response.json())
         // .then(response => { setApi(response.results); console.log(response); });
@@ -44,8 +49,7 @@ export default function Login() {
         //         flag = i;
         //     }
         // })
-        console.log(flag);
-         return flag;
+        return true;
     }
 
 

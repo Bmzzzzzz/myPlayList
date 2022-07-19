@@ -10,8 +10,10 @@ import React from "react";
 
 
 function App() {
-  const setUser = useState(false)
- 
+  const userState = useState(false)
+  useEffect(() => {
+    // check if token in local storage then get user by token
+  },[])
 
   return (
     <>
@@ -20,7 +22,7 @@ function App() {
       </div> */}
   
      
-        <UserContext.Provider value={setUser}>
+        <UserContext.Provider value={userState}>
           <Header />
           <Main />
         </UserContext.Provider>
