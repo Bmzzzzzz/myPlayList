@@ -15,7 +15,10 @@ export default function Main() {
           <main>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
+                {/* <Route path="/login" element={<Login />} /> */}
+                <Route path="/search" element={<Search />} />
+                <Route path="/playlist" element={<Playlist />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/singup" element={<SingUp />} />
             </Routes>
                 {/* <Footer /> */}

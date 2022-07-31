@@ -1,42 +1,47 @@
-import React from "react";
+import React, { useRef } from "react";
 
-function validation(firstNameInput, lastNameInput, emailInput, passwordInput) {
-
-    let inputToken = fetch('http://localhost:3002/api/users/register', {
-        method: "POST", headers: {
-            "Content-Type": "application/json"
-        }, body: JSON.stringify({ firstName: firstNameInput, lastName: lastNameInput, email: emailInput, password: passwordInput })
-    })
-  
-    localStorage.token = inputToken;
-}
-const onsubmit = (e) => {
-    e.preventDefault();
-
-    let firstNameInput = e.target.elements.firstName.value
-    let lastNameInput = e.target.elements.lastName.value
-    let emailInput = e.target.elements.email.value
-    let passwordInput = e.target.elements.password.value
-    let validPasswordInput = e.target.elements.validPassword.value
-
-    if (validPasswordInput === passwordInput) {
-        // console.log(firstNameInput, lastNameInput,emailInput, passwordInput,validPasswordInput);
-        validation(firstNameInput, lastNameInput, emailInput, passwordInput);
-    }
-    else { console.log("error password input"); }
-
-}
 
 
 export default function SingUp() {
+    
+    async function validation(firstNameInput, lastNameInput, emailInput, passwordInput) {
+    
+       let inputToken = await fetch('http://localhost:3002/api/users/register', {
+           method: "POST", headers: {
+               "Content-Type": "application/json"
+           }, body: JSON.stringify({ firstName: firstNameInput, lastName: lastNameInput, email: emailInput, password: passwordInput })
+       })
+     
+       localStorage.userToken = inputToken;
+    }
+    const onsubmit = (e) => {
+       e.preventDefault();
+    
+       let firstNameInput = e.target.elements.firstName.value
+       let lastNameInput = e.target.elements.lastName.value
+       let emailInput = e.target.elements.email.value
+       let passwordInput = e.target.elements.password.value
+       let validPasswordInput = e.target.elements.validPassword.value
+    
+       if (validPasswordInput === passwordInput) {
+           // console.log(firstNameInput, lastNameInput,emailInput, passwordInput,validPasswordInput);
+           validation(firstNameInput, lastNameInput, emailInput, passwordInput);
+       }
+       else { console.log("error password input"); }
+    
+    }
+
+    const showPassRef = useRef()
 
     const showPass = () => {
-        let x = document.getElementById("password")
-        if (x.type === "password") {
-            x.type = "text"
+
+        let passInputType = showPassRef.current.type;
+        if (passInputType === "password") {
+            showPassRef.current.type = "text"
         }
-        else { x.type = "password" }
+        else { showPassRef.current.type = "password" }
     }
+
     return (
         <>
 
@@ -52,7 +57,7 @@ export default function SingUp() {
                     <input type="text" id="email" name="email" placeholder="email" />
                     <br /><br />
 
-                    <input type="password" id="password" name="password" placeholder="Password" />
+                    <input type="password" id="password" name="password" placeholder="Password" ref={showPassRef} />
                     <br /><br />
 
                     <input type="Password" id="validPassword" name="validPassword" placeholder="Valid Password" />
