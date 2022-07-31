@@ -1,9 +1,10 @@
 import React, { useRef , useContext } from "react";
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UserLoginContext } from '../context/UserLoginContext'
 
 export default function Login() {
     
+    // eslint-disable-next-line
     const [isLoged, setIsLoged] = useContext(UserLoginContext)
     const navigate = useNavigate()
     const showPassRef = useRef()
@@ -47,6 +48,8 @@ export default function Login() {
     return (
 
         <div className='input'>
+                
+            <p>Not a member? <Link to="/signup" >Register</Link> </p>
 
             <form onSubmit={onsubmit} className="wrapper">
 

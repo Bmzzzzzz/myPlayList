@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 
 
 
-export default function SingUp() {
+export default function SignUp() {
     
     async function validation(firstNameInput, lastNameInput, emailInput, passwordInput) {
     
@@ -45,7 +46,8 @@ export default function SingUp() {
     return (
         <>
 
-            <h2 className="h">singup</h2>
+            <h2 className="h">signup</h2>
+            <p>Already a member? <Link to="/login" >Login</Link> </p>
             <div className='input'>
 
                 <form onSubmit={onsubmit} className="wrapper">

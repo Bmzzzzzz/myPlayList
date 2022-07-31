@@ -1,27 +1,21 @@
-import { Routes, Route } from "react-router-dom";
-import Login from "./Login";
-import Search from "./Search";
-import Playlist from "./Playlist";
-import SingUp from "./SingUp";
-import Home from "./Home";
-import Footer from "./Footer";
-import React from "react";
+import React,{useContext} from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { UserLoginContext } from "../context/UserLoginContext";
 
 
 export default function Main() {
   
+    // eslint-disable-next-line
+    const [isLoged, setIsLoged] = useContext(UserLoginContext)
+
     return (
         <>
           <main>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                {/* <Route path="/login" element={<Login />} /> */}
-                <Route path="/search" element={<Search />} />
-                <Route path="/playlist" element={<Playlist />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/singup" element={<SingUp />} />
-            </Routes>
-                {/* <Footer /> */}
+
+            {isLoged?
+             <Outlet />:
+             <Navigate to="/login" replace={true} />}
+
           </main>
         </>
     );

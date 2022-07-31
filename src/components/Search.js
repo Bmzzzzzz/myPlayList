@@ -1,18 +1,20 @@
-import { useState, useEffect , useRef } from "react";
-import { CardPlay, CardContent, CardFooter, CardHeader, CardButton } from './CardPlay'
 import * as React from 'react';
+import { useState, useEffect , useRef } from "react";
+import { useSearchParams } from 'react-router-dom';
+import { CardPlay, CardContent, CardFooter, CardHeader, CardButton } from './CardPlay'
 import '../style/app.css'
 
 
 export default function Search() {
 
-    const [inputSearch, setInputSearch] = useState("");
+
     const inputValue = useRef()
     const [api, setApi] = useState();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
 
-        if (!inputSearch) return
+        if (!searchParams.get("songSearch")) return
         setApi("")
 
         const options = {
@@ -23,11 +25,11 @@ export default function Search() {
             }
         };
         
-        fetch('https://simple-youtube-search.p.rapidapi.com/search?query=' + inputSearch, options)
+        fetch('https://simple-youtube-search.p.rapidapi.com/search?query=' + searchParams, options)
             .then(response => response.json())
             .then(response => { setApi(response.results);console.log(response.results); });
 
-    }, [inputSearch]);
+    }, [searchParams]);
 
 
     return (
@@ -37,11 +39,11 @@ export default function Search() {
             type="search"
             placeholder="search song or artist"
             ref={inputValue}
-            onKeyDown={(e)=>{e.key==="Enter" && setInputSearch(e.target.value)}}
+            onKeyDown={(e)=>{ let songSearch= e.target.value; e.key==="Enter" && setSearchParams({songSearch})}}
             />
-        <button onClick={() => setInputSearch(inputValue.current.value)}>Search</button>
+        <button onClick={() =>{let songSearch=inputValue.current.value; setSearchParams({songSearch})}}>Search</button>
         
-        {inputSearch && (api?
+        {searchParams.get("songSearch") && (api?
         <div className='songs'>
           {api.map((v) => {return (
             <div key={v.id}>
@@ -51,7 +53,7 @@ export default function Search() {
                             {/* <iframe src={v.url}></iframe>
                             <video src={v.url}></video> */}
                             {/* <div dangerouslySetInnerHTML={{ __html: `<iframe src=https://www.youtube.com/watch?v=Soa3gO7tL-c />` }} /> */}
-                            <img src={v.thumbnail.url} />
+                            <img src={v.thumbnail.url} alt={v.title} />
                     </CardHeader>
                     </a>
 
