@@ -11,8 +11,15 @@ function CardHeader(props) {
 function CardContent(props) {
     return <div className="cardContent">{props.children}</div>
 }
-function CardButton(props) {
-    return <div className="CardButton">{props.children}</div>
+function CardButton({song}) {
+    const addToPlaylist =(song)=>{
+        //navigate to playlist page
+            //get users playlists names
+            //post to playlist
+    }
+    return <button className="CardButton" onClick={()=>addToPlaylist(song)}>
+            Add to my playlist
+           </button>
 }
 function CardFooter(props) {
     return <div className="cardFooter">{props.children}</div>
