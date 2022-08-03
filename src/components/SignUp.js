@@ -1,9 +1,14 @@
-import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserLoginContext } from "../context/UserLoginContext";
 
 
 
 export default function SignUp() {
+
+    // eslint-disable-next-line
+    const [isLoged, setIsLoged] = useContext(UserLoginContext)
+    const navigate = useNavigate()
     
     async function validation(firstNameInput, lastNameInput, emailInput, passwordInput) {
     
@@ -11,10 +16,13 @@ export default function SignUp() {
            method: "POST", headers: {
                "Content-Type": "application/json"
            }, body: JSON.stringify({ firstName: firstNameInput, lastName: lastNameInput, email: emailInput, password: passwordInput })
-       })
-     
-       localStorage.userToken = inputToken;
+        })
+
+        localStorage.userToken = inputToken;
+        setIsLoged( inputToken );
+        navigate( "/home" );
     }
+    
     const onsubmit = (e) => {
        e.preventDefault();
     
@@ -28,7 +36,7 @@ export default function SignUp() {
            // console.log(firstNameInput, lastNameInput,emailInput, passwordInput,validPasswordInput);
            validation(firstNameInput, lastNameInput, emailInput, passwordInput);
        }
-       else { console.log("error password input"); }
+       else { alert("error password input"); }
     
     }
 

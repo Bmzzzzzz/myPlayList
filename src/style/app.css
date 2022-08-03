@@ -23,7 +23,7 @@
   }
 
    
-  iframe {
+  /* iframe {
     border-radius: 5px 5px 0 0;
     height:100px;
     width: 200px;
@@ -31,8 +31,10 @@
 
     /* width="420"
      height="345" */
-  }
-   
+  /* } */
+   .cardHeader{
+    cursor: pointer;
+   }
   .cardContent{
   background-color: #26d8706e;
   padding: 4px;
@@ -76,9 +78,10 @@
   display: flex;
 }
    */
-  
+
   .songs{
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
   }
   

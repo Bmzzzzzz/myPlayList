@@ -3,6 +3,7 @@ import { useState, useEffect , useRef } from "react";
 import { useSearchParams } from 'react-router-dom';
 import { CardPlay, CardContent, CardFooter, CardHeader, CardButton } from './CardPlay'
 import '../style/app.css'
+import Player from './Player';
 
 
 export default function Search() {
@@ -11,6 +12,7 @@ export default function Search() {
     const inputValue = useRef()
     const [api, setApi] = useState();
     const [searchParams, setSearchParams] = useSearchParams();
+    const [openPlayer, setOpenPlayer] = useState(false);
 
     useEffect(() => {
 
@@ -46,16 +48,16 @@ export default function Search() {
         {searchParams.get("songSearch") && (api?
         <div className='songs'>
           {api.map((v) => {return (
-            <div key={v.id}>
+              <div key={v.id}>
                 <CardPlay >
-                    <a href={v.url}>
+                    {/* <a href={v.url}> */}
                     <CardHeader>
                             {/* <iframe src={v.url}></iframe>
                             <video src={v.url}></video> */}
                             {/* <div dangerouslySetInnerHTML={{ __html: `<iframe src=https://www.youtube.com/watch?v=Soa3gO7tL-c />` }} /> */}
-                            <img src={v.thumbnail.url} alt={v.title} />
+                            <img src={v.thumbnail.url} alt={v.title} onClick={()=>setOpenPlayer(v.url)} />
                     </CardHeader>
-                    </a>
+                    {/* </a> */}
 
                     <CardContent >
                             <p><b>{v.title}</b></p>
@@ -70,6 +72,7 @@ export default function Search() {
 
             </div>
           )})}
+          {openPlayer && <Player url={openPlayer} close={setOpenPlayer} />}
         </div>
         :<div className="lds-hourglass">Loading.....</div>)}
     </>
