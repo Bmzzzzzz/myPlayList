@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import "../style/popup.css"
+import "../style/player.css"
 import ReactPlayer from 'react-player/youtube'
-import { debounce } from 'lodash'
+
 
 export default function Player({url, close}) {
 

@@ -12,14 +12,19 @@ export default function SignUp() {
     
     async function validation(firstNameInput, lastNameInput, emailInput, passwordInput) {
     
-       let inputToken = await fetch('http://localhost:3002/api/users/register', {
+       let response = await fetch('http://localhost:3002/api/users/register', {
            method: "POST", headers: {
                "Content-Type": "application/json"
            }, body: JSON.stringify({ firstName: firstNameInput, lastName: lastNameInput, email: emailInput, password: passwordInput })
         })
 
-        localStorage.userToken = inputToken;
-        setIsLoged( inputToken );
+        if (!response.ok)
+        alert( response.status+ response.statusText)
+
+        const data = await response.json()
+        
+        localStorage.userToken = data.token;
+        setIsLoged( data.token );
         navigate( "/home" );
     }
     

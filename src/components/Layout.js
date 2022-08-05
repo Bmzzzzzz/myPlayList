@@ -20,7 +20,7 @@ function Layout() {
 
   useEffect(() => {
 
-    let tenHoursAgo = new Date().setHours(new Date().getHours() - 10)
+    let tenHoursAgo = new Date().setHours(new Date().getHours() - 9)
 
     if(isLoged && ( localStorage.loginDate > tenHoursAgo || (!localStorage.loginDate)) ){
       
@@ -34,7 +34,10 @@ function Layout() {
         localStorage.loginDate = new Date().getTime()
       })
     }
-    else setUser(localStorage.clear());
+    else {
+      setUser(localStorage.clear());
+      setIsLoged('');
+    }
 
   },[isLoged])
  
@@ -48,7 +51,7 @@ function Layout() {
               <Route path="/" element={<Main />}>
                 <Route path="/home" element={<Home />} />
                 <Route path="/search" element={<Search />} />
-                <Route path="/playlist" element={<Playlist />} />
+                <Route path="/playlist" element={<Playlist user={user} />} />
               </Route>
 
               <Route path="/signup" element={<SignUp />} />
