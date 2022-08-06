@@ -33,6 +33,7 @@
      height="345" */
   /* } */
    .cardHeader{
+     height: 165px;
     cursor: pointer;
    }
   .cardContent{
@@ -54,6 +55,12 @@
           font-size: 15px;
           margin-top: 4px;
           cursor: pointer;
+        }
+        .play-icon{
+          position: relative;
+          top: -110px;
+          width: 2em;
+          height: 2em;
         }
    
   .items {
@@ -88,7 +95,7 @@
 
 
  .link{
-    padding: 20px;
+    margin: 20px;
 }
 
 .spin{

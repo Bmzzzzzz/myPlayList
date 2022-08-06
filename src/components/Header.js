@@ -1,19 +1,18 @@
+import React, { useContext } from "react";
 import Nav from "./Nav";
-import { UserLoginContext } from "../context/UserLoginContext";
-import { useContext } from "react";
 import '../style/loding.css'
 import'../style/app.css'
-import React from "react";
+import { userDetailContext } from "../context/userDetailContext";
 
 
-export default function Header({user}) {
+export default function Header({setLog}) {
 
-    // eslint-disable-next-line
-    const [isLoged, setIsLoged] = useContext(UserLoginContext)
+    const [user, setUser]= useContext(userDetailContext)
 
     const Logout = ()=>{
         localStorage.clear()
-        setIsLoged('')
+        setLog('')
+        setUser('')
     }
    
     return (

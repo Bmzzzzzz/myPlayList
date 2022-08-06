@@ -1,11 +1,9 @@
-import React, { useRef , useContext } from "react";
+import React, { useRef } from "react";
 import { Link, useNavigate } from 'react-router-dom'
-import { UserLoginContext } from '../context/UserLoginContext'
 
-export default function Login() {
+export default function Login({setLog}) {
     
     // eslint-disable-next-line
-    const [isLoged, setIsLoged] = useContext(UserLoginContext)
     const navigate = useNavigate()
     const showPassRef = useRef()
 
@@ -29,8 +27,8 @@ export default function Login() {
                 alert( token );
                 else{
                     localStorage.userToken = token;
-                    setIsLoged( token );
-                    navigate( "/home" );
+                    setLog( token );
+                    navigate( "/home/Songs" );
                 }
             })
    

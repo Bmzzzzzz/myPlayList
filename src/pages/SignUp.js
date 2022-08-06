@@ -1,13 +1,10 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserLoginContext } from "../context/UserLoginContext";
 
 
 
-export default function SignUp() {
+export default function SignUp({setLog}) {
 
-    // eslint-disable-next-line
-    const [isLoged, setIsLoged] = useContext(UserLoginContext)
     const navigate = useNavigate()
     
     async function validation(firstNameInput, lastNameInput, emailInput, passwordInput) {
@@ -24,8 +21,8 @@ export default function SignUp() {
         const data = await response.json()
         
         localStorage.userToken = data.token;
-        setIsLoged( data.token );
-        navigate( "/home" );
+        setLog( data.token );
+        navigate( "/home/Songs" );
     }
     
     const onsubmit = (e) => {
