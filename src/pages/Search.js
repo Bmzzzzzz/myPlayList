@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect , useRef } from "react";
 import { Outlet, useSearchParams } from 'react-router-dom';
-import { CardPlay, CardButton, CardContainer } from '../components/CardPlay'
+import { CardPlay, CardContainer } from '../components/CardPlay'
 import '../style/app.css'
 
 
@@ -46,7 +46,7 @@ export default function Search() {
         {searchParams.get("songSearch") && (
             api?
               <CardContainer>
-                {api.map( v => <CardPlay key={v.id} song={v} ><CardButton song={v} /></CardPlay> )}
+                {api.map( v => <CardPlay key={v.id} song={v} btn={"add"} /> )}
               </CardContainer>
 
             :<div className="lds-hourglass">Loading.....</div>

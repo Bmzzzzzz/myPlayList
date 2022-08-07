@@ -28,7 +28,7 @@ export default function Login({setLog}) {
                 else{
                     localStorage.userToken = token;
                     setLog( token );
-                    navigate( "/home/Songs" );
+                    navigate( "/home" );
                 }
             })
    

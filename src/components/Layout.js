@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./Header";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
@@ -22,18 +22,23 @@ function Layout() {
  
   return (
     <>
+    <BrowserRouter>
         <userDetailContext.Provider value={[user, setUser]}>
 
           <Header setLog={setIsLoged} />
     
            <Routes>
+
+              <Route path="/" element={<Navigate to="/home" replace={true} />} />
               <Route path="/" element={<Main setUser={setUser} log={[isLoged, setIsLoged]} />}>
-                <Route path="/home/:title" element={<Songs />} >
+                <Route path="/home" element={<Songs />} >
                   <Route path=":songName" element={<Player />} />
                 </Route>
+
                 <Route path="/search" element={<Search />} >
                   <Route path=":songName" element={<Player />} />
                 </Route>
+
                 <Route path="/playlist" element={<Playlist user={user} />} />
                 <Route path="playlist/:title" element={<Songs />} >
                   <Route path="all-songs" element={<Player />} />
@@ -44,9 +49,11 @@ function Layout() {
               <Route path="/signup" element={<SignUp setLog={setIsLoged} />} />
               <Route path="/login" element={<Login setLog={setIsLoged} />} />
               <Route path="*" element={<h1>Not Found</h1>} />
+              
            </Routes>
 
         </userDetailContext.Provider>
+    </BrowserRouter>
     </>
   );
   

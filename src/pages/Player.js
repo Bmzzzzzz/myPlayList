@@ -7,7 +7,6 @@ import ReactPlayer from 'react-player/youtube'
 export default function Player() {
 
     const [plays, setPlays] = useState('')
-    // const url = useOutletContext()
     const navigate = useNavigate()
     const {state} = useLocation()
 

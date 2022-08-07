@@ -1,188 +1,58 @@
-
-
-
-
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(8, 235, 163, 0.959);
-    transition: 0.5s;
-    width: 200px;
-    border-radius: 5px;
-    margin: 15px;
-  }
-   
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(29, 206, 38, 0.8);
-  }
-   
-  img {
-    border-radius: 5px 5px 0 0;
-    height: 165px;
-    width: 200px;
-
-
-  }
-
-   
-  /* iframe {
-    border-radius: 5px 5px 0 0;
-    height:100px;
-    width: 200px;
-
-
-    /* width="420"
-     height="345" */
-  /* } */
-   .cardHeader{
-     height: 165px;
-    cursor: pointer;
-   }
-  .cardContent{
-  background-color: #26d8706e;
-  padding: 4px;
-  font-size: 14px;
-  height: 65px;
-      }
-  .cardFooter {
-    background-color: #19d0d6;
-    padding: 2px 16px;
-    font-size: 15px;
-    height: 50px;
-        }
-        .CardButton{
-          width: 200px;
-          background-color: #e0fbfc;
-          padding: 2px 16px;
-          font-size: 15px;
-          margin-top: 4px;
-          cursor: pointer;
-        }
-        .play-icon{
-          position: relative;
-          top: -110px;
-          width: 2em;
-          height: 2em;
-        }
-   
-  .items {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  body{
-    background-color: #98c1d9;
-  }
-  button{
-    width: 70px;
-    height: 50px;
-  }
-  .button{
-    
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  
-/* main{
-  display: flex;
-}
-   */
-
-  .songs{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-
-
- .link{
-    margin: 20px;
+body {
+    background: rgb(22, 21, 21);
+    color: #ffff;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    text-align: center;
+    margin: 0;
+    font-size: x-large;
 }
 
-.spin{
-  display: flex;
+main {
+    /* width: 750px;
+    height: 750px; */
+    border: 1px solid #b2601a;
+    margin-bottom: 10px;
+    border-radius: 3px;
 }
-
 
 header {
-    width: 960px;
-    margin: 0 auto;
-  }
-  
-
-
-  
-  header {
     width: auto;
     margin-left: 10px;
     flex: auto;
     display: flex;
     margin: 20px;
-  }
-  
-  serch
-  main {
-    width: 750px;
-    height: 750px;;
-  }
-  
-  /* *,
-  *:before,
-  *:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  } */
-  
-  body {
-    
-    background: rgb(223, 32, 32);
-    color:#ffff;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-align: center;
-    margin: 0;
-    font-size: x-large;
-  }
-  
-
-
-  main {
-    border: 1px solid #b2601a;
-    margin-bottom: 10px;
-    border-radius: 3px;
-   
-  }
-  
-  header {
-    position: relative
-    
-  }
-  
-/* .searchList{
-  display: flex;
-
-} */
-
-/* .artists{
-  width: 40vw;
-  display: flex;
-  flex-direction:column;
-} */
-
-/* .songs{
-  display: flex;
-  flex-direction:column;
-  width: 40vw;
-} */
-
-.input{
-  color: #1d3c45;
-  font-size: small;
 }
 
-.user-name{
-  margin-left: auto;
+.link {
+    margin: 20px;
+    text-decoration: none;
 }
- 
-a{
-  text-decoration: none;
+
+.user-name {
+    margin-left: auto;
+}
+
+.spin {
+    display: flex;
+}
+
+button {
+    width: 70px;
+    height: 50px;
+}
+.button {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.songs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.input {
+    color: #1d3c45;
+    font-size: small;
 }

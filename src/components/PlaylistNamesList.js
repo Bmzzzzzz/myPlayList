@@ -3,7 +3,7 @@ import axios from "axios"
 import { userDetailContext } from "../context/userDetailContext";
 
 
-export default function PlaylistNamesList({song}){
+export default function PlaylistNamesList({song, close}){
 
     const {id, title, url, duration_formatted, thumbnail} = song;
     const [playlists, setPlaylists] = useState()
@@ -31,6 +31,8 @@ export default function PlaylistNamesList({song}){
             console.log(error);
             alert(error.response.data)
         });
+        
+        close('');
     }
 
     useEffect(()=>{

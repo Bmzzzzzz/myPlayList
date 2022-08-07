@@ -1,68 +1,48 @@
-
-
-
-/* 
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(71, 150, 125, 0.2);
+.card {
+    box-shadow: 0 4px 8px 0 rgba(8, 235, 163, 0.959);
     transition: 0.5s;
-    width: 300px;
+    width: 200px;
     border-radius: 5px;
     margin: 15px;
-  }
-   
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(210, 64, 64, 0.8);
-  }
-   
-  img {
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(29, 206, 38, 0.8);
+}
+
+img {
     border-radius: 5px 5px 0 0;
-    height: 300px;
-    width: 300px;
+    height: 165px;
+    width: 200px;
+}
 
-
-  }
-
-   
-  iframe {
-    border-radius: 5px 5px 0 0;
-    height: 300px;
-    width: 300px;
-
-
-    /* width="420"
-     height="345" */
-  
-   
-  .cardContent{
-  background-color: #ee6c4d;
-  padding: 2px 16px;
-  font-size: 20px;
-      }
-  .cardFooter {
+.cardHeader {
+    height: 165px;
+    cursor: pointer;
+}
+.cardContent {
+    background-color: #26d8706e;
+    padding: 4px;
+    font-size: 14px;
+    height: 65px;
+}
+.cardFooter {
+    background-color: #19d0d6;
+    padding: 2px 16px;
+    font-size: 15px;
+    height: 50px;
+}
+.CardButton {
+    width: 200px;
     background-color: #e0fbfc;
     padding: 2px 16px;
-    font-size: 20px;
-        }
-        .CardButton{
-          background-color: #e0fbfc;
-          padding: 2px 16px;
-          font-size: 20px;
-        }
-   
-  .items {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  body{
-    background-color: #98c1d9;
-  }
-  button{
-    width: 70px;
-    height: 50px;
-  }
-  .button{
-    
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
+    font-size: 15px;
+    margin-top: 4px;
+    cursor: pointer;
+}
+.play-icon {
+    position: relative;
+    top: -110px;
+    width: 2em;
+    height: 2em;
+}

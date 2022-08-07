@@ -9,7 +9,7 @@ export default function Nav(){
         <nav>
         
         <NavLink style={({ isActive }) =>{return{ color: isActive && "green"}}} className="link" 
-            to="/home/Songs"> home 
+            to="/home"> home 
         </NavLink>
 
         <NavLink style={({ isActive }) =>{return{ color: isActive && "green"}}} className="link" 

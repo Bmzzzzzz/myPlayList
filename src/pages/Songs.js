@@ -10,6 +10,7 @@ export default function Songs() {
     const {title} = useParams()
     const {state, pathname} = useLocation()
     const [songs, setSongs] = useState()
+    const [newFech, setNewFech] = useState(0)
 
     const myPath = ()=>{
         return pathname.startsWith("/playlist") ?
@@ -36,7 +37,7 @@ export default function Songs() {
             alert(error.response.data);
         });
 
-    },[title])
+    },[newFech, title ])
 
     const playAll =()=>{
 
@@ -47,7 +48,7 @@ export default function Songs() {
   return (
 
     <>
-        <div>{title}</div>
+        <div>{title || "All Songs"}</div>
 
         {songs ? (
           songs.length ?
@@ -55,7 +56,7 @@ export default function Songs() {
               <button onClick={playAll} >Play All</button>
   
               <CardContainer>
-                  {songs.map(s =><CardPlay key={s.id} song={s} />)} 
+                  {songs.map(s =><CardPlay key={s.id} song={s} btn={"del"} setNewFech={setNewFech} />)} 
               </CardContainer> 
             </>
 

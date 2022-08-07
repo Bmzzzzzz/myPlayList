@@ -29,9 +29,10 @@ export default function Playlist({user}){
         e.preventDefault();
      
         axios.post('http://localhost:3002/api/playlists/',
-             {title: e.target.title.value,
-            userId: user._id,
-            id: new Date().getTime()} ,
+            {
+                title: e.target.title.value,
+                userId: user._id,
+                id: new Date().getTime()} ,
             { headers: { 
                 Authorization: 'Bearer ' + localStorage.userToken
             }}

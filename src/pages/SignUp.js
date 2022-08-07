@@ -22,7 +22,7 @@ export default function SignUp({setLog}) {
         
         localStorage.userToken = data.token;
         setLog( data.token );
-        navigate( "/home/Songs" );
+        navigate( "/home" );
     }
     
     const onsubmit = (e) => {
