@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, } from "react-router-dom";
+import { userDetailContext } from "../context/userDetailContext";
 import'../style/app.css'
 
-export default function Nav(){
+export default function Nav({setLog}){
+
+    const [user, setUser]= useContext(userDetailContext)
+
+    const logout = ()=>{
+        if(user) {
+            localStorage.clear()
+            setLog('')
+            setUser('')
+        }
+    }
 
     return(
         <>
@@ -20,12 +31,12 @@ export default function Nav(){
             to="/playlist"> Playlists 
         </NavLink>
 
-        <NavLink style={({ isActive }) =>{return{ color: isActive && "green"}}} className="link" 
-            to="/login"> Login 
+        <NavLink onClick={logout} style={({ isActive }) =>{return{ color: isActive && "green"}}} className="link" 
+            to="/login"> { user? "Logout" : "Login" } 
         </NavLink>
 
         <NavLink style={({ isActive }) =>{return{ color: isActive && "green"}}} className="link" 
-            to="/signup"> SignUp 
+            to="/signup"> Signup 
         </NavLink>
 
         </nav>

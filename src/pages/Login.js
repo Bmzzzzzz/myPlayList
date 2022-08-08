@@ -1,11 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom'
+import { popupContext } from '../context/popupContext'
 
 export default function Login({setLog}) {
     
-    // eslint-disable-next-line
     const navigate = useNavigate()
     const showPassRef = useRef()
+    const setPopup = useContext(popupContext)
 
     const onsubmit = (e) => {
 
@@ -24,7 +25,7 @@ export default function Login({setLog}) {
             .then(response=>response.text())
             .then(token=>{
                 if ( token === "user not found" ) 
-                alert( token );
+                setPopup( token );
                 else{
                     localStorage.userToken = token;
                     setLog( token );

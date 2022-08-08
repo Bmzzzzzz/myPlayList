@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import '../style/playlist.css'
-
+import { popupContext } from '../context/popupContext'
 
 export default function Playlist({user}){
-
+    
     const [playlists, setPlaylists] = useState("")
     const [newPlaylist, setNewPlaylists] = useState(0)
+    const setPopup = useContext(popupContext)
     
     useEffect(()=>{
 
@@ -19,7 +20,7 @@ export default function Playlist({user}){
         })
         .catch(error =>{
             console.log(error)
-            alert(error.response.data);
+            setPopup(error.response.data);
         });
 
     },[newPlaylist])
@@ -40,11 +41,11 @@ export default function Playlist({user}){
         .then(response =>{
             console.log(response)
             setNewPlaylists(newPlaylist+1)
-            alert(`Playlist "${e.target.title.value}" added to your playlists`)
+            setPopup(`Playlist "${e.target.title.value}" added to your playlists`)
         })
         .catch(error =>{
             console.log(error)
-            alert(`"${e.target.title.value}" ${error.response.data}`)
+            setPopup(`"${e.target.title.value}" ${error.response.data}`)
         });
     }
 

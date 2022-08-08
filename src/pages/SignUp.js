@@ -1,11 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { popupContext } from '../context/popupContext'
 
 
 export default function SignUp({setLog}) {
-
+    
     const navigate = useNavigate()
+    const setPopup = useContext(popupContext)
     
     async function validation(firstNameInput, lastNameInput, emailInput, passwordInput) {
     
@@ -16,7 +17,7 @@ export default function SignUp({setLog}) {
         })
 
         if (!response.ok)
-        alert( response.status+ response.statusText)
+        setPopup( response.status+ response.statusText)
 
         const data = await response.json()
         
@@ -38,7 +39,7 @@ export default function SignUp({setLog}) {
            // console.log(firstNameInput, lastNameInput,emailInput, passwordInput,validPasswordInput);
            validation(firstNameInput, lastNameInput, emailInput, passwordInput);
        }
-       else { alert("error password input"); }
+       else { setPopup("error password input"); }
     
     }
 

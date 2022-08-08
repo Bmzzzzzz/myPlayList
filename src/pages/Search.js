@@ -35,13 +35,15 @@ export default function Search() {
     return (
     <>
         <br />  <br />
+        <div>
         <input
             type="search"
             placeholder="search song or artist"
             ref={inputValue}
             onKeyDown={(e)=>{ let songSearch= e.target.value; e.key==="Enter" && setSearchParams({songSearch})}}
-            />
-        <button onClick={() =>{let songSearch=inputValue.current.value; setSearchParams({songSearch})}}>Search</button>
+        />
+        </div>
+        {/* <button onClick={() =>{let songSearch=inputValue.current.value; setSearchParams({songSearch})}}>Search</button> */}
         
         {searchParams.get("songSearch") && (
             api?

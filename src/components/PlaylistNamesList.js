@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useContext } from "react"
 import axios from "axios"
 import { userDetailContext } from "../context/userDetailContext";
+import { popupContext } from '../context/popupContext'
 
 
 export default function PlaylistNamesList({song, close}){
-
+    
     const {id, title, url, duration_formatted, thumbnail} = song;
     const [playlists, setPlaylists] = useState()
-      // eslint-disable-next-line
+    // eslint-disable-next-line
     const [user, setUser] = useContext(userDetailContext)
+    const setPopup = useContext(popupContext)
 
     const add = (playlistId, PlaylistTitle)=>{
         axios.post('http://localhost:3002/api/songs/',
@@ -25,11 +27,11 @@ export default function PlaylistNamesList({song, close}){
         )
         .then(res=>{
             console.log(res)
-            alert( `"${title}" added to "${PlaylistTitle}"` )
+            setPopup( `"${title}" added to "${PlaylistTitle}"` )
         })
         .catch(error =>{
             console.log(error);
-            alert(error.response.data)
+            setPopup(error.response.data)
         });
         
         close('');
@@ -45,7 +47,7 @@ export default function PlaylistNamesList({song, close}){
         })
         .catch(error =>{
             console.log(error)
-            alert(error.response.data);
+            setPopup(error.response.data);
         });
     },[])
 

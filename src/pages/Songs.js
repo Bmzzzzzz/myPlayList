@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useLocation, useParams, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { CardContainer, CardPlay } from '../components/CardPlay'
+import { popupContext } from '../context/popupContext'
 
 
 export default function Songs() {
@@ -11,6 +12,7 @@ export default function Songs() {
     const {state, pathname} = useLocation()
     const [songs, setSongs] = useState()
     const [newFech, setNewFech] = useState(0)
+    const setPopup = useContext(popupContext)
 
     const myPath = ()=>{
         return pathname.startsWith("/playlist") ?
@@ -34,7 +36,7 @@ export default function Songs() {
         })
         .catch(error =>{
             console.log(error)
-            alert(error.response.data);
+            setPopup(error.response.data);
         });
 
     },[newFech, title ])

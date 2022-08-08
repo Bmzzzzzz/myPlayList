@@ -11,20 +11,23 @@ body {
 main {
     /* width: 750px;
     height: 750px; */
-    border: 1px solid #b2601a;
+    /* border: 1px solid #b2601a;
+    border-radius: 3px; */
     margin-bottom: 10px;
-    border-radius: 3px;
 }
 
 header {
-    width: auto;
-    margin-left: 10px;
-    flex: auto;
+    /* width: auto; */
+    /* margin-left: 10px; */
     display: flex;
-    margin: 20px;
+    align-items: center;
+    /* flex: auto; */
+    padding: 20px;
+    height: 60px;
+    border-bottom: 1px solid rgb(30,30,30);
 }
 
-.link {
+a {
     margin: 20px;
     text-decoration: none;
 }

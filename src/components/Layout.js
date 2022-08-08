@@ -7,16 +7,19 @@ import Main from "./Main";
 import Search from "../pages/Search";
 import Playlist from "../pages/Playlist";
 import Songs from "../pages/Songs";
+import Player from "../pages/Player";
+import Popup from './Popup'
 import { userDetailContext } from "../context/userDetailContext";
+import { popupContext } from "../context/popupContext";
 import '../style/app.css'
 import '../style/loding.css'
-import Player from "../pages/Player";
 
 
 function Layout() {
   
   const [isLoged, setIsLoged] = useState(localStorage.userToken)
   const [user, setUser] = useState()
+  const [popup, setPopup] = useState()
 
   
  
@@ -24,9 +27,11 @@ function Layout() {
     <>
     <BrowserRouter>
         <userDetailContext.Provider value={[user, setUser]}>
+        <popupContext.Provider value={setPopup} >
 
           <Header setLog={setIsLoged} />
-    
+          {popup && <Popup content={popup} close={setPopup} />}
+
            <Routes>
 
               <Route path="/" element={<Navigate to="/home" replace={true} />} />
@@ -52,6 +57,7 @@ function Layout() {
               
            </Routes>
 
+        </popupContext.Provider>
         </userDetailContext.Provider>
     </BrowserRouter>
     </>
